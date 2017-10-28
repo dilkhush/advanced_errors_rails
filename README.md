@@ -1,6 +1,6 @@
 # AdvancedErrorsRails
 
-Extentions to ActiveRecord's error handling features which I find useful.
+Extentions to ActiveRecord's error handling features which I find useful. Support for rails 4 and rails 5
 
 ## Installation
 
