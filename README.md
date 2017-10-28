@@ -1,8 +1,6 @@
 # AdvancedErrorsRails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/advanced_errors_rails`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Extentions to ActiveRecord's error handling features which I find useful.
 
 ## Installation
 
@@ -22,8 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
+Add ^ before your active record validation message to ignore the attribute key before the message
+        
+    class User < ActiveRecord::Base
+        validates_presence_of :login, message: "^You really should have a login."
+        validates_presence_of :password, message: "can't be blank."
+    end        
+        
+    user = User.new()
+    user.valid?
+    user.errors.full_messages # => ["You really should have a login.", "Password can't be blank."]
+        
+See the in first message the 'login' attribute is not added before the message here. So we can fully customize our validation messages using this.
+    
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
