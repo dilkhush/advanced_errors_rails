@@ -3,6 +3,7 @@ module AdvancedErrorsRails
     def full_messages_with_ignore_attribute
       error = ActiveModel::Errors.new @base
       self.each do |attribute, message|
+        byebug
         unless message.match(/^\^/)
           error.add attribute, message
         else
